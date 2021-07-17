@@ -1,8 +1,8 @@
-.field {
+.sign-up-field {
   margin-left: 5px;
 }
 
-.input-string {
+.sign-up-string {
   width: 50%;
   margin-bottom: 10px;
   height: 12px;
@@ -14,6 +14,6 @@
   resize: none;
 }
 
-.input-text{
+.sign-up-text{
   height: 36px;
 }
