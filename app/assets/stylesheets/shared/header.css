@@ -1,0 +1,22 @@
+header {
+  width: 100vw;
+  height: 100px;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: lime;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+li {
+  list-style: none;
+}
+
+* {
+  text-decoration: none;
+}
+
+.title, .header-btn {
+  font-size: 20px
+}
