@@ -1,21 +1,24 @@
 <%= render "shared/header" %>
 
-<%= form_with model: @user, url: user_session_path, class: 'registration-main', local: true do |f| %>
-  <%= render "devise/shared/error_messages", model: f.object %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, class:"input-string", autofocus: true, autocomplete: "email" %>
+<%= form_with model: @user, url: user_session_path, local: true do |f| %>
+  <%# <%= render "devise/shared/error_messages", model: f.object %>
+  <div class='login-flash-message'>
+    <%= alert %>
   </div>
 
-  <div class="field">
+  <div class="login-field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, class:"login-string", autofocus: true, autocomplete: "email" %>
+  </div>
+  <div class="login-field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
-    <%= f.password_field :password, class:"input-string", autocomplete: "new-password" %>
+    <%= f.password_field :password, class:"login-string", autocomplete: "new-password" %>
   </div>
 
-  <div class="field">
-    <%= f.submit "Sign up" %>
+  <div class="login-field">
+    <%= f.submit "Log in" %>
   </div>
 <% end %>
