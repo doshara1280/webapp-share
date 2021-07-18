@@ -1,6 +1,6 @@
-class CreateApps < ActiveRecord::Migration[6.0]
+class CreateWebApps < ActiveRecord::Migration[6.0]
   def change
-    create_table :apps do |t|
+    create_table :web_apps do |t|
       t.string :name, null: false
       t.text :description, null: false
       t.string :language, null: false
