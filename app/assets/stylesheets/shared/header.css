@@ -9,6 +9,14 @@ header {
   align-items: center;
 }
 
+.header-btn {
+  display: flex;
+}
+
+.header-list {
+  padding: 0 10px;
+}
+
 li {
   list-style: none;
 }
