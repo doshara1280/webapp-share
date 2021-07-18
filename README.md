@@ -9,11 +9,11 @@
 | one_word_comment   | text   | null: false               |
 
 ### Association
-- has_many :apps
+- has_many :web_apps
 - has_many :comments
 
 
-## appsテーブル
+## web_appsテーブル
 | column      | Type       | Options                        |
 | ----------- | -----------| ------------------------------ |
 | name        | string     | null: false                    |
@@ -34,8 +34,8 @@
 | -------- | ---------- | ------------------------------ |
 | sentence | text       | null: false                    |
 | user     | references | null: false, foreign_key: true |
-| app      | references | null: false, foreign_key: true |
+| web-app  | references | null: false, foreign_key: true |
 
 
 ### Association
-- belongs_to :app
+- belongs_to :web-app
