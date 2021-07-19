@@ -2,6 +2,7 @@ class WebAppsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
 
   def index
+    @web_apps = WebApp.includes(:user).order('created_at DESC')
   end
 
   def new
