@@ -1,0 +1,41 @@
+.web_app-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.paginate {
+  margin: 0 auto;
+}
+.web_app-list {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+li {
+  list-style: none;
+}
+
+.web_app-image {
+  width: 200px;
+  height: 200px;
+  border: solid 1px black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.names {
+  display: flex;
+  justify-content: space-between;
+}
+
+.titles {
+  display: inline-block;
+  display: flex;
+  justify-content: space-between;
+  margin: 5px;
+}
+
+
