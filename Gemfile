@@ -61,3 +61,7 @@ gem 'pry-rails'
 
 gem 'mini_magick'
 gem 'image_processing', '~> 1.2'
+
+gem 'kaminari'
+
+gem 'bootstrap', '~> 5.0.0'
