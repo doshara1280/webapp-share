@@ -4,9 +4,9 @@
   justify-content: space-between;
 }
 
-/* .paginate {
+.paginate {
   margin: 0 auto;
-} */
+}
 .web_app-list {
   display: flex;
   justify-content: space-around;
