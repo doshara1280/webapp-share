@@ -1,0 +1,40 @@
+<%= render "shared/header" %>
+
+<%= form_with model: @web_app, url: web_app_path(@web_app.id), local: true do |f| %>
+<%= render "shared/error_messages", model: f.object%>
+  <div class="post-board">
+    <div class="app-image">
+      <div class="webapp-input">
+        <p>アプリイメージ画像</p>
+        <%= f.file_field :image %>
+      </div>
+      <div class="webapp-input">
+        <p>アプリ名</p>
+        <%= f.text_field :name, class:"box" %>
+      </div>
+      <div class="webapp-input">
+        <p>アプリ説明</p>
+        <%= f.text_area :description, class:"box" %>
+      </div>
+      <div class="webapp-input">
+        <p>使用言語等</p>
+        <%= f.text_field :language, class:"box" %>
+      </div>
+      <div class="webapp-input">
+        <p>リンク</p>
+        <%= f.text_field :link, class:"box" %>
+      </div>
+      <div class="webapp-input">
+        <p>自由記述</p>
+        <%= f.text_area :free, class:"box" %>
+      </div>
+      <div class="webapp-input">
+        <p>アプリ更新履歴(初回投稿時は0としてください)</p>
+        <%= f.number_field :edit_count, class:"box" %>
+      </div>
+      <div class="webapp-input">
+        <%= f.submit "編集" %>
+      </div>
+    </div>
+  </div>
+<% end %>
