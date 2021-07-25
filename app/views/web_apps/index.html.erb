@@ -5,17 +5,19 @@
     <% if !@web_apps.empty? %>
       <% @web_apps.each do |web_app| %>
         <div class="web_app-block">
-          <div class="web_app-image">
-            <%= image_tag web_app.image, class: "web_app-image" if web_app.image.attached? %>
-          </div>
-          <div class="names">
-            <div class="web_app-name">
-              <%= web_app.name %>
+          <%= link_to web_app_path(web_app.id) do %>
+            <div class="web_app-image">
+              <%= image_tag web_app.image, class: "web_app-image" if web_app.image.attached? %>
             </div>
-            <div class="nick-name">
-              <%= web_app.user.nickname %>
+            <div class="names">
+              <div class="web_app-name">
+                <%= web_app.name %>
+              </div>
+              <div class="nick-name">
+                <%= web_app.user.nickname %>
+              </div>
             </div>
-          </div>
+          <% end %>
         </div>
       <% end %>
     <% end %>
