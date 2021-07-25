@@ -1,5 +1,5 @@
 class WebAppsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :show, :edit, :update]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
   before_action :find, only: [:show, :edit, :update]
   before_action :move_to_top, only: [:edit, :update]
 
