@@ -1,40 +1,39 @@
 <%= render "shared/header" %>
 
-<%= form_with model: @web_app, url: web_apps_path, local: true do |f| %>
-<%= render "shared/error_messages", model: f.object%>
-  <div class="post-board">
-    <div class="app-image">
-      <div class="webapp-show">
-        <p>アプリイメージ画像</p>
-        <%= image_tag @web_app.image, class: "web_app-image" if @web_app.image.attached? %>
-      </div>
-      <div class="webapp-show">
-        <p>アプリ名</p>
-        <%= @web_app.name %>
-      </div>
-      <div class="webapp-show">
-        <p>アプリ説明</p>
-        <%= @web_app.description %>
-      </div>
-      <div class="webapp-show">
-        <p>使用言語等</p>
-        <%= @web_app.language %>
-      </div>
-      <div class="webapp-show">
-        <p>リンク</p>
-        <%= @web_app.link %>
-      </div>
-      <div class="webapp-show">
-        <p>自由記述</p>
-        <%= @web_app.free %>
-      </div>
-      <div class="webapp-show">
-        <p>アプリ更新履歴(初回投稿時は0としてください)</p>
-        <%= @web_app.edit_count %>
-      </div>
-      <div class="webapp-show">
-          <%= f.submit "編集" %>
-      </div>
+<div class="post-board">
+  <div class="app-image">
+    <div class="webapp-show">
+      <p>アプリイメージ画像</p>
+      <%= image_tag @web_app.image, class: "web_app-image" if @web_app.image.attached? %>
+    </div>
+    <div class="webapp-show">
+      <p>アプリ名</p>
+      <%= @web_app.name %>
+    </div>
+    <div class="webapp-show">
+      <p>アプリ説明</p>
+      <%= @web_app.description %>
+    </div>
+    <div class="webapp-show">
+      <p>使用言語等</p>
+      <%= @web_app.language %>
+    </div>
+    <div class="webapp-show">
+      <p>リンク</p>
+      <%= @web_app.link %>
+    </div>
+    <div class="webapp-show">
+      <p>自由記述</p>
+      <%= @web_app.free %>
+    </div>
+    <div class="webapp-show">
+      <p>アプリ更新履歴(初回投稿時は0としてください)</p>
+      <%= @web_app.edit_count %>
+    </div>
+    <div class="webapp-show">
+      <% if user_signed_in? && @web_app.user.id == current_user.id %>
+        <%= link_to "編集", edit_web_app_path(@web_app.id) %>
+      <% end %>
     </div>
   </div>
-<% end %>
+</div>
