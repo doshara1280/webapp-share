@@ -1,6 +1,6 @@
 class WebAppsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update]
-  before_action :find, only: [:show, :edit, :update]
+  before_action :find, only: [:show, :edit, :update, :destroy]
   before_action :move_to_top, only: [:edit, :update]
 
   def index
@@ -34,6 +34,11 @@ class WebAppsController < ApplicationController
     end
   end
 
+  def destroy
+    @web_app.destroy
+    redirect_to root_path
+  end
+  
   private
   def web_app_params
     params.require(:web_app).permit(:name, :description, :language, :free, :link, :edit_count, :image).merge(user_id: current_user.id)
