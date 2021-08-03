@@ -20,7 +20,9 @@ class WebAppsController < ApplicationController
     end
   end
 
-  def show 
+  def show
+    @comment = Comment.new
+    @comments = @web_app.comments.includes(:user).order(created_at: "DESC")
   end
   
   def edit
