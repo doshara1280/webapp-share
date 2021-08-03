@@ -9,3 +9,7 @@
 .webapp-show {
   margin-bottom: 40px;
 }
+
+.dummy_text_field {
+  display: none;
+}

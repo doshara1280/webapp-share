@@ -34,8 +34,8 @@
 | -------- | ---------- | ------------------------------ |
 | sentence | text       | null: false                    |
 | user     | references | null: false, foreign_key: true |
-| web-app  | references | null: false, foreign_key: true |
+| web_app  | references | null: false, foreign_key: true |
 
 
 ### Association
-- belongs_to :web-app
+- belongs_to :web_app
