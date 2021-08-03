@@ -36,5 +36,21 @@
         <%= link_to "削除", web_app_path(@web_app.id), method: :delete %>
       <% end %>
     </div>
+    <% if user_signed_in? %>
+      <input type="number" id="webapp_id" class="dummy_text_field" value=<%= @web_app.id %>>
+      <input type="text_field" id="user_nickname" class="dummy_text_field" value=<%= current_user.nickname %>>
+      <%= form_with url: web_app_comments_path(@web_app.id), method: :post, id: "form", local: true do |f| %>
+        <%= f.text_field :sentence, id: "sentence" %>
+        <%= f.submit 'コメントする', id:"comment_submit" %>
+      <% end %>
+    <% end %>
+    <% if @comments.exists? %>
+      <p>＜コメント一覧＞</p>
+      <div id="comment_list">
+      <% @comments.each do |comment| %>
+        <%= comment.user.nickname %>:<%= comment.sentence %><br>
+      <% end %>
+    </div>
+    <% end %>
   </div>
 </div>
