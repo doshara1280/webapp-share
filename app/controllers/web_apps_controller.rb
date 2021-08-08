@@ -41,6 +41,9 @@ class WebAppsController < ApplicationController
     redirect_to root_path
   end
   
+  def description
+  end
+
   private
   def web_app_params
     params.require(:web_app).permit(:name, :description, :language, :free, :link, :edit_count, :image).merge(user_id: current_user.id)
