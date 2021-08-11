@@ -4,7 +4,7 @@ class WebAppsController < ApplicationController
   before_action :move_to_top, only: [:edit, :update]
 
   def index
-    @web_apps = WebApp.includes(:user).order('created_at DESC').page(params[:page]).per(3)
+    @web_apps = WebApp.includes(:user).order('created_at DESC').page(params[:page]).per(8)
   end
 
   def new
