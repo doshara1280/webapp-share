@@ -46,22 +46,22 @@ RSpec.describe WebApp, type: :model do
       it 'edit_countが英字だと投稿できない' do
         @web_app.edit_count = 'a'
         @web_app.valid?
-        expect(@web_app.errors.full_messages).to include("Edit count is invalid. edit_count must be 0-99 and half-width characters")
+        expect(@web_app.errors.full_messages).to include('Edit count is invalid. edit_count must be 0-99 and half-width characters')
       end
       it 'edit_countが全角だと投稿できない' do
         @web_app.edit_count = '１'
         @web_app.valid?
-        expect(@web_app.errors.full_messages).to include("Edit count is invalid. edit_count must be 0-99 and half-width characters")
+        expect(@web_app.errors.full_messages).to include('Edit count is invalid. edit_count must be 0-99 and half-width characters')
       end
       it 'edit_countが負だと投稿できない' do
         @web_app.edit_count = '-1'
         @web_app.valid?
-        expect(@web_app.errors.full_messages).to include("Edit count is invalid. edit_count must be 0-99 and half-width characters")
+        expect(@web_app.errors.full_messages).to include('Edit count is invalid. edit_count must be 0-99 and half-width characters')
       end
       it 'edit_countが100以上だと投稿できない' do
         @web_app.edit_count = '100'
         @web_app.valid?
-        expect(@web_app.errors.full_messages).to include("Edit count is invalid. edit_count must be 0-99 and half-width characters")
+        expect(@web_app.errors.full_messages).to include('Edit count is invalid. edit_count must be 0-99 and half-width characters')
       end
       it 'imageが添付されていないと投稿できない' do
         @web_app.image = nil
@@ -71,7 +71,7 @@ RSpec.describe WebApp, type: :model do
       it 'userが紐づいていないと投稿できない' do
         @web_app.user = nil
         @web_app.valid?
-        expect(@web_app.errors.full_messages).to include("User must exist")
+        expect(@web_app.errors.full_messages).to include('User must exist')
       end
     end
   end

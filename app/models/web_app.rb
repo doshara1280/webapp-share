@@ -8,7 +8,9 @@ class WebApp < ApplicationRecord
     validates :language
     validates :free
     validates :link
-    validates :edit_count, numericality: {greater_than_or_equal_to: 0, less_than_or_equal_to: 99, message: 'is invalid. edit_count must be 0-99 and half-width characters' }
+    validates :edit_count,
+              numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 99,
+                              message: 'is invalid. edit_count must be 0-99 and half-width characters' }
     validates :image
   end
 end

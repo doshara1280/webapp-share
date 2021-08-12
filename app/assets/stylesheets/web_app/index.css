@@ -18,8 +18,8 @@ li {
 }
 
 .web_app-image {
-  width: 200px;
-  height: 200px;
+  width: 350px;
+  height: 350px;
   border: solid 1px black;
   display: flex;
   flex-direction: column;
