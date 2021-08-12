@@ -22,9 +22,9 @@ class WebAppsController < ApplicationController
 
   def show
     @comment = Comment.new
-    @comments = @web_app.comments.includes(:user).order(created_at: "DESC")
+    @comments = @web_app.comments.includes(:user).order(created_at: 'DESC')
   end
-  
+
   def edit
   end
 
@@ -40,13 +40,15 @@ class WebAppsController < ApplicationController
     @web_app.destroy
     redirect_to root_path
   end
-  
+
   def description
   end
 
   private
+
   def web_app_params
-    params.require(:web_app).permit(:name, :description, :language, :free, :link, :edit_count, :image).merge(user_id: current_user.id)
+    params.require(:web_app).permit(:name, :description, :language, :free, :link, :edit_count,
+                                    :image).merge(user_id: current_user.id)
   end
 
   def find
@@ -54,8 +56,6 @@ class WebAppsController < ApplicationController
   end
 
   def move_to_top
-    if current_user.id != @web_app.user.id
-      redirect_to root_path
-    end
+    redirect_to root_path if current_user.id != @web_app.user.id
   end
 end
