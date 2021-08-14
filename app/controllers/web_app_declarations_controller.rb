@@ -16,6 +16,10 @@ class WebAppDeclarationsController < ApplicationController
     end
   end
 
+  def show
+    @web_app_declaration = WebAppDeclaration.find(params[:id])
+  end
+
   def web_app_declaration_params
     params.require(:web_app_declaration).permit(:name, :description, :days, :image).merge(user_id: current_user.id)
   end
