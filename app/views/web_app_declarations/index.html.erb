@@ -5,7 +5,7 @@
     <% if !@web_app_declarations.empty? %>
       <% @web_app_declarations.each do |declaration| %>
         <div class="web_app-block">
-          <%= link_to "#" do %>
+          <%= link_to web_app_declaration_path(declaration.id) do %>
             <div class="web_app-image">
               <%= image_tag declaration.image, class: "web_app-image waku" if declaration.image.attached? %>
             </div>
