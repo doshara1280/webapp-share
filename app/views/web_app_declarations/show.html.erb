@@ -1,0 +1,36 @@
+<%= render "shared/header" %>
+
+<div class="post-board">
+  <div class="app-image">
+    <div class="webapp-show">
+      <p>アプリイメージ画像</p>
+      <%= image_tag @web_app_declaration.image, class: "web_app-image" if @web_app_declaration.image.attached? %>
+    </div>
+    <div class="webapp-show">
+      <p>アプリ名</p>
+      <%= @web_app_declaration.name %>
+    </div>
+    <div class="webapp-show">
+      <p>アプリ説明</p>
+      <%= @web_app_declaration.description %>
+    </div>
+    <div class="webapp-show">
+      <p>開発完了予定日</p>
+      <%= @web_app_declaration.days %>
+    </div>
+    <div class="webapp-show">
+      <p>開発残り日数</p>
+      <% later = (@web_app_declaration.days - Date.current).to_i %>
+      <% if later >= 0 %>
+        <span class="days"><%= later %></span>
+      <% else %>
+        <p>-</p>
+      <% end %>
+    </div>
+    <div class="webapp-show">
+      <% if user_signed_in? && @web_app_declaration.user.id == current_user.id %>
+        <%= link_to "削除", "#", method: :delete %>
+      <% end %>
+    </div>
+  </div>
+</div>
