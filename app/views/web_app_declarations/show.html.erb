@@ -29,7 +29,7 @@
     </div>
     <div class="webapp-show">
       <% if user_signed_in? && @web_app_declaration.user.id == current_user.id %>
-        <%= link_to "削除", "#", method: :delete %>
+        <%= link_to "削除", web_app_declaration_path, method: :delete %>
       <% end %>
     </div>
   </div>
