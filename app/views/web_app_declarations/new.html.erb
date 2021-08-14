@@ -1,0 +1,30 @@
+<%= render "shared/header" %>
+
+<%= form_with model: @web_app_declaration, url: web_app_declarations_path, local: true do |f| %>
+<%= render "shared/error_messages", model: f.object%>
+  <div class="post-board">
+    <div class="app-image">
+      <div class="webapp-input">
+        <p>アプリイメージ画像</p>
+        <%= f.file_field :image %>
+      </div>
+      <div class="webapp-input">
+        <p>アプリ名</p>
+        <%= f.text_field :name, class:"box" %>
+      </div>
+      <div class="webapp-input">
+        <p>アプリ説明</p>
+        <%= f.text_area :description, class:"box" %>
+      </div>
+      <div class="webapp-input">
+        <p>開発予定日数</p>
+        <%= f.number_field :days, class:"box" %>
+      </div>
+      <div class="webapp-input">
+        <div class="webapp-input">
+          <%= f.submit "投稿予約" %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
