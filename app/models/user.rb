@@ -10,4 +10,5 @@ class User < ApplicationRecord
     validates :nickname
     validates :one_word_comment
   end
+  has_one :web_app_declaration
 end
