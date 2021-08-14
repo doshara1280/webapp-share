@@ -15,6 +15,7 @@
       <li><%= link_to 'アプリ投稿宣言一覧', web_app_declarations_path, class: "header-list" %> </li>
       <li><%= link_to 'ログアウト', destroy_user_session_path, class: "header-list", method: :delete %> </li>
     <% else %>
+      <li><%= link_to 'アプリ投稿宣言一覧', web_app_declarations_path, class: "header-list" %> </li>
       <li><%= link_to '新規登録', new_user_registration_path, class: "header-list" %></li>
       <li><%= link_to 'ログイン', new_user_session_path, class: "header-list" %></li>
     <% end %>
