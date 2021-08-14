@@ -15,8 +15,17 @@
       <%= @web_app_declaration.description %>
     </div>
     <div class="webapp-show">
-      <p>開発予定日数</p>
+      <p>開発完了予定日</p>
       <%= @web_app_declaration.days %>
+    </div>
+    <div class="webapp-show">
+      <p>開発残り日数</p>
+      <% later = (@web_app_declaration.days - Date.current).to_i %>
+      <% if later >= 0 %>
+        <span class="days"><%= later %></span>
+      <% else %>
+        <p>-</p>
+      <% end %>
     </div>
     <div class="webapp-show">
       <% if user_signed_in? && @web_app_declaration.user.id == current_user.id %>
