@@ -2,7 +2,6 @@ class CommentsController < ApplicationController
   def create
     comment = Comment.new(comment_params)
     if comment.save
-      # redirect_to web_app_path(@comment.web_app.id)
       render json: { comment: comment }
     else
       @web_app = @comment.web_app
