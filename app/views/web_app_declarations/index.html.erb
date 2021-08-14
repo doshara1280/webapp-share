@@ -1,0 +1,28 @@
+<%= render "shared/header" %>
+
+<div class="web_app-page">
+  <div class="web_app-list">
+    <% if !@web_app_declarations.empty? %>
+      <% @web_app_declarations.each do |declaration| %>
+        <div class="web_app-block">
+          <%= link_to "#" do %>
+            <div class="web_app-image">
+              <%= image_tag declaration.image, class: "web_app-image waku" if declaration.image.attached? %>
+            </div>
+            <div class="names">
+              <div class="web_app-name">
+                <%= declaration.name %>
+              </div>
+              <div class="nick-name">
+                <%= declaration.user.nickname %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="paginate">
+    <%= paginate @web_app_declarations %>
+  </div>
+</div>
