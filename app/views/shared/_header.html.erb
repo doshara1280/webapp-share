@@ -1,7 +1,7 @@
 <header>
   <div class="header-message">
     <div class="title">
-      <%= link_to 'WebAppShare', web_apps_path %>
+      <%= link_to 'WebAppShare Top', web_apps_path %>
     </div>
     <div class="message">
       <h2>未経験エンジニア歓迎！！</h2>
@@ -11,6 +11,8 @@
     <% if user_signed_in? %>
       <p class="header-list "><%= current_user.nickname %>
       <li><%= link_to 'アプリ投稿', new_web_app_path, class: "header-list" %> </li>
+      <li><%= link_to 'アプリ投稿宣言', new_web_app_declaration_path, class: "header-list" %> </li>
+      <li><%= link_to 'アプリ投稿宣言一覧', web_app_declarations_path, class: "header-list" %> </li>
       <li><%= link_to 'ログアウト', destroy_user_session_path, class: "header-list", method: :delete %> </li>
     <% else %>
       <li><%= link_to '新規登録', new_user_registration_path, class: "header-list" %></li>
