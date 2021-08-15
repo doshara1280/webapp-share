@@ -11,7 +11,8 @@
 ### Association
 - has_many :web_apps
 - has_many :comments
-- has_one :web_app_declarations
+- has_one :web_app_declaration
+- has_many :declaration_comments
 
 
 ## web_appsテーブル
@@ -37,8 +38,8 @@
 | user     | references | null: false, foreign_key: true |
 | web_app  | references | null: false, foreign_key: true |
 
-
 ### Association
+- belongs_to :user
 - belongs_to :web_app
 
 
@@ -52,3 +53,15 @@
 
 ### Association
 - belongs_to :user
+
+
+## declaration_commentsテーブル
+| column              | Type       | Options                        |
+| ------------------- | ---------- | ------------------------------ |
+| sentence            | text       | null: false                    |
+| user                | references | null: false, foreign_key: true |
+| web_app_declaration | references | null: false, foreign_key: true |
+
+### Association
+- belongs_to :user
+- belongs_to :declaration_comment
