@@ -11,4 +11,5 @@ class User < ApplicationRecord
     validates :one_word_comment
   end
   has_one :web_app_declaration
+  has_many :declaration_comments
 end
