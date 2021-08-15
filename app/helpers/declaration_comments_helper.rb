@@ -1,0 +1,2 @@
+module DeclarationCommentsHelper
+end
