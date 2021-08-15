@@ -32,5 +32,21 @@
         <%= link_to "削除", web_app_declaration_path, method: :delete %>
       <% end %>
     </div>
+    <% if user_signed_in? %>
+      <input type="number" id="declaration_id" class="dummy_text_field" value=<%= @web_app_declaration.id %>>
+      <input type="text_field" id="declaration_user_nickname" class="dummy_text_field" value=<%= current_user.nickname %>>
+      <%= form_with url: web_app_declaration_declaration_comments_path(@web_app_declaration.id), method: :post, id: "declaration_form", local: true do |f| %>
+        <%= f.text_field :sentence, id: "declaration_sentence" %>
+        <%= f.submit 'コメントする', id:"declaration_comment_submit" %>
+      <% end %>
+    <% end %>
+    <% if !@declaration_comments.nil? %>
+      <p>＜コメント一覧＞</p>
+      <div id="declaration_comment_list">
+      <% @declaration_comments.each do |comment| %>
+        <%= comment.user.nickname %>:<%= comment.sentence %><br>
+      <% end %>
+    </div>
+    <% end %>
   </div>
 </div>
