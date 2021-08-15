@@ -44,7 +44,7 @@
         <%= f.submit 'コメントする', id:"comment_submit" %>
       <% end %>
     <% end %>
-    <% if @comments.exists? %>
+    <% if !@comments.nil? %>
       <p>＜コメント一覧＞</p>
       <div id="comment_list">
       <% @comments.each do |comment| %>
