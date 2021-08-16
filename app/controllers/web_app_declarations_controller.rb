@@ -20,6 +20,8 @@ class WebAppDeclarationsController < ApplicationController
   end
 
   def show
+    @declaration_comment = DeclarationComment.new
+    @declaration_comments = @web_app_declaration.declaration_comments.includes(:user).order(created_at: 'DESC')
   end
 
   def destroy

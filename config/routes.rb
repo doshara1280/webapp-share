@@ -7,5 +7,7 @@ Rails.application.routes.draw do
     end
     resources :comments, only: [:create]
   end
-  resources :web_app_declarations, only: [:index, :new, :create, :show, :destroy]
+  resources :web_app_declarations, only: [:index, :new, :create, :show, :destroy] do
+    resources :declaration_comments, only: [:create]
+  end
 end
