@@ -2,55 +2,59 @@
 
 <div class="post-board">
   <div class="app-image">
-    <div class="webapp-show">
-      <p>アプリイメージ画像</p>
-      <%= image_tag @web_app.image, class: "web_app-image" if @web_app.image.attached? %>
+    <div class="show-left">
+      <div class="webapp-show">
+        <p>アプリイメージ画像</p>
+        <%= image_tag @web_app.image, class: "web_app-image" if @web_app.image.attached? %>
+      </div>
+      <div class="webapp-show">
+        <p>アプリ名</p>
+        <%= @web_app.name %>
+      </div>
+      <div class="webapp-show">
+        <p>アプリ説明</p>
+        <%= @web_app.description %>
+      </div>
+      <div class="webapp-show">
+        <p>使用言語等</p>
+        <%= @web_app.language %>
+      </div>
+      <div class="webapp-show">
+        <p>リンク</p>
+        <%= @web_app.link %>
+      </div>
+      <div class="webapp-show">
+        <p>自由記述</p>
+        <%= @web_app.free %>
+      </div>
+      <div class="webapp-show">
+        <p>アプリ更新履歴(初回投稿時は0としてください)</p>
+        <%= @web_app.edit_count %>
+      </div>
+      <div class="webapp-show">
+        <% if user_signed_in? && @web_app.user.id == current_user.id %>
+          <%= link_to "編集", edit_web_app_path(@web_app.id) %>
+          <%= link_to "削除", web_app_path(@web_app.id), method: :delete %>
+        <% end %>
+      </div>
     </div>
-    <div class="webapp-show">
-      <p>アプリ名</p>
-      <%= @web_app.name %>
-    </div>
-    <div class="webapp-show">
-      <p>アプリ説明</p>
-      <%= @web_app.description %>
-    </div>
-    <div class="webapp-show">
-      <p>使用言語等</p>
-      <%= @web_app.language %>
-    </div>
-    <div class="webapp-show">
-      <p>リンク</p>
-      <%= @web_app.link %>
-    </div>
-    <div class="webapp-show">
-      <p>自由記述</p>
-      <%= @web_app.free %>
-    </div>
-    <div class="webapp-show">
-      <p>アプリ更新履歴(初回投稿時は0としてください)</p>
-      <%= @web_app.edit_count %>
-    </div>
-    <div class="webapp-show">
-      <% if user_signed_in? && @web_app.user.id == current_user.id %>
-        <%= link_to "編集", edit_web_app_path(@web_app.id) %>
-        <%= link_to "削除", web_app_path(@web_app.id), method: :delete %>
+    <div class="show-right">
+      <% if user_signed_in? %>
+        <input type="number" id="webapp_id" class="dummy_text_field" value=<%= @web_app.id %>>
+        <input type="text_field" id="user_nickname" class="dummy_text_field" value=<%= current_user.nickname %>>
+        <%= form_with url: web_app_comments_path(@web_app.id), method: :post, id: "form", local: true do |f| %>
+          <%= f.text_field :sentence, id: "sentence" %>
+          <%= f.submit 'コメントする', id:"comment_submit" %>
+        <% end %>
+      <% end %>
+      <% if !@comments.nil? %>
+        <p>＜コメント一覧＞</p>
+        <div id="comment_list">
+        <% @comments.each do |comment| %>
+          <%= comment.user.nickname %>:<%= comment.sentence %><br>
+        <% end %>
+      </div>
       <% end %>
     </div>
-    <% if user_signed_in? %>
-      <input type="number" id="webapp_id" class="dummy_text_field" value=<%= @web_app.id %>>
-      <input type="text_field" id="user_nickname" class="dummy_text_field" value=<%= current_user.nickname %>>
-      <%= form_with url: web_app_comments_path(@web_app.id), method: :post, id: "form", local: true do |f| %>
-        <%= f.text_field :sentence, id: "sentence" %>
-        <%= f.submit 'コメントする', id:"comment_submit" %>
-      <% end %>
-    <% end %>
-    <% if !@comments.nil? %>
-      <p>＜コメント一覧＞</p>
-      <div id="comment_list">
-      <% @comments.each do |comment| %>
-        <%= comment.user.nickname %>:<%= comment.sentence %><br>
-      <% end %>
-    </div>
-    <% end %>
   </div>
 </div>
