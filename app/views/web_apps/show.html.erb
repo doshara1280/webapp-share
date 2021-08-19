@@ -21,7 +21,7 @@
       </div>
       <div class="webapp-show">
         <p>リンク</p>
-        <%= @web_app.link %>
+        <%= link_to @web_app.link, @web_app.link, target: :_blank, rel: "noopener noreferrer" %>
       </div>
       <div class="webapp-show">
         <p>自由記述</p>
