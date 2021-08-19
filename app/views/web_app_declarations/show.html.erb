@@ -1,52 +1,56 @@
 <%= render "shared/header" %>
 
 <div class="post-board">
-  <div class="app-image">
-    <div class="webapp-show">
-      <p>アプリイメージ画像</p>
-      <%= image_tag @web_app_declaration.image, class: "web_app-image" if @web_app_declaration.image.attached? %>
+  <div class="app-image-comment app-image">
+    <div class="show-left">
+      <div class="webapp-show">
+        <p>アプリイメージ画像</p>
+        <%= image_tag @web_app_declaration.image, class: "web_app-image" if @web_app_declaration.image.attached? %>
+      </div>
+      <div class="webapp-show">
+        <p>アプリ名</p>
+        <%= @web_app_declaration.name %>
+      </div>
+      <div class="webapp-show">
+        <p>アプリ説明</p>
+        <%= @web_app_declaration.description %>
+      </div>
+      <div class="webapp-show">
+        <p>開発完了予定日</p>
+        <%= @web_app_declaration.days %>
+      </div>
+      <div class="webapp-show">
+        <p>開発残り日数</p>
+        <% later = (@web_app_declaration.days - Date.current).to_i %>
+        <% if later >= 0 %>
+          <span class="days"><%= later %></span>
+        <% else %>
+          <p>-</p>
+        <% end %>
+      </div>
+      <div class="webapp-show">
+        <% if user_signed_in? && @web_app_declaration.user.id == current_user.id %>
+          <%= link_to "削除", web_app_declaration_path, method: :delete %>
+        <% end %>
+      </div>
     </div>
-    <div class="webapp-show">
-      <p>アプリ名</p>
-      <%= @web_app_declaration.name %>
-    </div>
-    <div class="webapp-show">
-      <p>アプリ説明</p>
-      <%= @web_app_declaration.description %>
-    </div>
-    <div class="webapp-show">
-      <p>開発完了予定日</p>
-      <%= @web_app_declaration.days %>
-    </div>
-    <div class="webapp-show">
-      <p>開発残り日数</p>
-      <% later = (@web_app_declaration.days - Date.current).to_i %>
-      <% if later >= 0 %>
-        <span class="days"><%= later %></span>
-      <% else %>
-        <p>-</p>
+    <div class="show-right">
+      <% if user_signed_in? %>
+        <input type="number" id="declaration_id" class="dummy_text_field" value=<%= @web_app_declaration.id %>>
+        <input type="text_field" id="declaration_user_nickname" class="dummy_text_field" value=<%= current_user.nickname %>>
+        <%= form_with url: web_app_declaration_declaration_comments_path(@web_app_declaration.id), method: :post, id: "declaration_form", local: true do |f| %>
+          <%= f.text_field :sentence, id: "declaration_sentence" %>
+          <%= f.submit 'コメントする', id:"declaration_comment_submit" %>
+        <% end %>
+      <% end %>
+      <% if !@declaration_comments.nil? %>
+        <p>＜コメント一覧＞</p>
+        <div id="declaration_comment_list">
+        <% @declaration_comments.each do |comment| %>
+          <%= comment.user.nickname %>:<%= comment.sentence %><br>
+        <% end %>
+      </div>
       <% end %>
     </div>
-    <div class="webapp-show">
-      <% if user_signed_in? && @web_app_declaration.user.id == current_user.id %>
-        <%= link_to "削除", web_app_declaration_path, method: :delete %>
-      <% end %>
-    </div>
-    <% if user_signed_in? %>
-      <input type="number" id="declaration_id" class="dummy_text_field" value=<%= @web_app_declaration.id %>>
-      <input type="text_field" id="declaration_user_nickname" class="dummy_text_field" value=<%= current_user.nickname %>>
-      <%= form_with url: web_app_declaration_declaration_comments_path(@web_app_declaration.id), method: :post, id: "declaration_form", local: true do |f| %>
-        <%= f.text_field :sentence, id: "declaration_sentence" %>
-        <%= f.submit 'コメントする', id:"declaration_comment_submit" %>
-      <% end %>
-    <% end %>
-    <% if !@declaration_comments.nil? %>
-      <p>＜コメント一覧＞</p>
-      <div id="declaration_comment_list">
-      <% @declaration_comments.each do |comment| %>
-        <%= comment.user.nickname %>:<%= comment.sentence %><br>
-      <% end %>
-    </div>
-    <% end %>
   </div>
 </div>

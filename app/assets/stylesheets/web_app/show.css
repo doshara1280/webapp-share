@@ -13,3 +13,11 @@
 .dummy_text_field {
   display: none;
 }
+
+.app-image-comment {
+  display: flex;
+}
+
+.show-right {
+  margin: 60px 0 0 60px;
+}
